@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {Chart} from 'chart.js';
+import {FirstChartService} from './first-chart.service';
 
 @Component({
   selector: 'app-first-chart',
@@ -60,6 +61,10 @@ export class FirstChartComponent implements AfterViewInit {
         ]
       },
       options: {
+        tooltips: {
+          enabled: false,
+          custom: tooltipModel => FirstChartService.customTooltip(tooltipModel, this._chart)
+        },
         responsive: true,
         title: {
           display: true,
